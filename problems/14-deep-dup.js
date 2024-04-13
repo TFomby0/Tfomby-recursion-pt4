@@ -33,11 +33,16 @@ let y = x.slice();
 console.log(x[0] === y[0]) // true
 ***********************************************************************/
 
-
 function deepDup(arr) {
-  // Your code here 
+  if (!Array.isArray(arr)) {
+    return arr;
+  }
+  let dup = [];
+  for (let i = 0; i < arr.length; i++) {
+    dup.push(deepDup(arr[i]));
+  }
+  return dup;
 }
-
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

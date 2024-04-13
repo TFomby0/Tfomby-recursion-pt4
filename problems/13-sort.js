@@ -6,8 +6,7 @@ Your function should accept a default argument called `sorted` which
 holds the currently sorted elements. Each recursive step should add
 the smallest number in the `nums` array to the end of `sorted`.
 
-There are many ways to accomplish this task but here's a simple algorithm:
-
+There are many ways to i
 1. Check the base case: If `nums` is empty, then return `sorted`
 2. Otherwise, find the smallest element in `nums`
 3. Add the smallest element to the end of `sorted`
@@ -22,7 +21,18 @@ sort([]); // []
 ***********************************************************************/
 
 function sort(nums, sorted = []) {
-    // Your code here 
+  if (!nums.length) {
+    return sorted;
+  }
+  let minIndex = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] < nums[minIndex]) {
+      minIndex = i;
+    }
+  }
+  sorted.push(nums[minIndex]);
+  nums.splice(minIndex, 1);
+  return sort(nums, sorted);
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
